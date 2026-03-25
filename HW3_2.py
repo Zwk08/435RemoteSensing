@@ -5,7 +5,7 @@ from datetime import datetime
 picam2 = Picamera2()
 
 # Use still config at native sensor resolution to avoid zoomed crop
-picam2.configure(picam2.create_still_configuration(main={"size": (3280,2464)}))
+picam2.configure(picam2.create_still_configuration(main={"size": (1280,720)}))
 picam2.start()
 
 try:
