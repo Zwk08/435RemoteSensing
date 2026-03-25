@@ -21,7 +21,7 @@ try:
         image = picam2.capture_array()
         
         # Show live camera feed
-        #cv2.imshow("Camera", image)
+        cv2.imshow("Camera", image)
         
         # Wait 10 ms and check for key presses
         key = cv2.waitKey(10) & 0xFF
