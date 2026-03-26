@@ -33,7 +33,7 @@ picam2.configure(config)
 
 # Optional: fix color tint
 picam2.set_controls({
-    "AwbMode": 5 #"Incandescent",   # or "Auto" / "Daylight" depending on your lighting
+    "AwbMode": 5,#"Incandescent",   # or "Auto" / "Daylight" depending on your lighting
     "Brightness": 0.5,           # adjust if needed
     "Contrast": 1.0,
     "Saturation": 1.2             # slightly boost color if green looks dull
