@@ -66,7 +66,7 @@ while True:
     # blur the frame and convert to the HSV
     # color space
     image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    blurred = cv2.GaussianBlur(image, (11, 11), 0)
+    blurred = cv2.GaussianBlur(image, (5, 5), 0)#make smaller for better fps
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     # construct a mask for the color "green", then perform
     # a series of dilations and erosions to remove any small
