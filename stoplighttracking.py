@@ -57,6 +57,7 @@ time.sleep(0.1)
 while True:
     image = picam2.capture_array()
     # blur the frame and convert to the HSV
+    image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     # color space
     blurred = cv2.GaussianBlur(image, (11, 11), 0)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
