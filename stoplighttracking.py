@@ -9,7 +9,7 @@
 #from picamera import PiCamera
 from picamera2 import Picamera2
 import numpy as np
-#import imutils
+import imutils
 import cv2
 import time
 
@@ -27,7 +27,16 @@ camera.framerate = 25
 rawCapture = PiRGBArray(camera, size=(640,480))
 """
 picam2 = Picamera2()
-picam2.configure(picam2.create_preview_configuration(main={"size":(640,480)}))
+picam2.configure(picam2.create_preview_configuration(main={"size":(640,480)}), display = "None")
+picam2.configure(config)
+
+# Optional: fix color tint
+picam2.set_controls({
+    "AwbMode": "Incandescent",   # or "Auto" / "Daylight" depending on your lighting
+    "Brightness": 0.5,           # adjust if needed
+    "Contrast": 1.0,
+    "Saturation": 1.2             # slightly boost color if green looks dull
+})
 picam2.start()
 # allow the camera to warmup
 time.sleep(0.1)
