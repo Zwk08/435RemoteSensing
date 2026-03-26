@@ -30,14 +30,14 @@ picam2 = Picamera2()
 # Video configuration (less crop than preview)
 config = picam2.create_preview_configuration(main={"size": (640, 480)})
 picam2.configure(config)
-
+picam2.start()
 # Optional: fix color tint
 
 # allow the camera to warmup
 time.sleep(0.1)
 
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-out = cv2.VideoWriter('stoplight.mp4', fourcc, 25, (640, 480))
+out = cv2.VideoWriter('stoplight.mp4', fourcc, 10, (640, 480))
 
 # --- Timing for recording ---
 start_time = time.time()
@@ -61,7 +61,7 @@ while True:
     # color space
     image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     blurred = cv2.GaussianBlur(image, (5, 5), 0)#make smaller for better fps
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
     # construct a mask for the color "green", then perform
     # a series of dilations and erosions to remove any small
     # blobs left in the mask
@@ -103,6 +103,9 @@ while True:
     if key == ord("q") or (time.time()- start_time)> record_duration:
         break
 print("Recording finished")
+cv2.destroyAllWindows()
+picam2.stop()
+out.release()
 
 
 
