@@ -9,7 +9,7 @@
 #from picamera import PiCamera
 from picamera2 import Picamera2
 import numpy as np
-import imutils
+#import imutils
 import cv2
 import time
 
