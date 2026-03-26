@@ -28,7 +28,7 @@ rawCapture = PiRGBArray(camera, size=(640,480))
 """
 picam2 = Picamera2()
 # Video configuration (less crop than preview)
-config = picam2.create_video_configuration(main={"size": (640, 480)})
+config = picam2.create_preview_configuration(main={"size": (640, 480)})
 picam2.configure(config)
 
 # Optional: fix color tint
@@ -62,7 +62,10 @@ record_duration = 32  # seconds (change if you want longer)
 # grab the current frame
 #image = frame.array
 while True:
-    image = picam2.capture_array()
+    #image = picam2.capture_array()
+    request = picam2.capture_request()
+    image = request.make_array("main")
+    request.release()
     # blur the frame and convert to the HSV
     # color space
     image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
