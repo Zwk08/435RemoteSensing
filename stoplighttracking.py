@@ -4,8 +4,10 @@
 # and saves video of tracking to stoplight.mp4
 
 # import the necessary packages
-from picamera.array import PiRGBArray
-from picamera import PiCamera
+
+#from picamera.array import PiRGBArray
+#from picamera import PiCamera
+from picamera2 import Picamera2
 import numpy as np
 import imutils
 import cv2
@@ -18,11 +20,15 @@ colorLower = (29, 70, 6)
 colorUpper = (75, 255, 255)
 
 # initialize the Raspberry Pi camera
+"""
 camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 25
 rawCapture = PiRGBArray(camera, size=(640,480))
-
+"""
+picam2 = Picamera2()
+picam2.configure(picam2.create_preview_configuration(main={"size":(640,480)}))
+picam2.start()
 # allow the camera to warmup
 time.sleep(0.1)
 
@@ -35,9 +41,11 @@ time.sleep(0.1)
 
 
 # keep looping
-for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=False):
-    # grab the current frame
-    image = frame.array
+#for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=False):
+# grab the current frame
+#image = frame.array
+while True:
+    image = picam2.capture_array()
     # blur the frame and convert to the HSV
     # color space
     blurred = cv2.GaussianBlur(image, (11, 11), 0)
@@ -77,7 +85,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     key = cv2.waitKey(1) & 0xFF
 
     # clear the stream in preparation for the next frame
-    rawCapture.truncate(0)
+    #rawCapture.truncate(0)
 
     # press the 'q' key to stop the video stream
     if key == ord("q"):
