@@ -42,6 +42,13 @@ picam2.start()
 # allow the camera to warmup
 time.sleep(0.1)
 
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+out = cv2.VideoWriter('stoplight.mp4', fourcc, 25, (640, 480))
+
+# --- Timing for recording ---
+start_time = time.time()
+record_duration = 32  # seconds (change if you want longer)
+
 # define the codec and create VideoWriter object
 # UNCOMMENT THE FOLLOWING TWO (2) LINES TO SAVE .avi VIDEO FILE
 # TRY BOTH XVID THEN MJPG, IN THE EVENT THE .avi FILE IS NOT SAVING PROPERLY
@@ -89,7 +96,7 @@ while True:
             cv2.circle(image_bgr, center, 2, (0, 0, 255), -1)
             # write the frame to video file
             # UNCOMMENT THE FOLLOWING ONE (1) LINE TO SAVE .avi VIDEO FILE
-        #out.write(image)
+    out.write(image_bgr)
 
     # show the frame to our screen
     cv2.imshow("Frame", image_bgr)
@@ -99,9 +106,9 @@ while True:
     #rawCapture.truncate(0)
 
     # press the 'q' key to stop the video stream
-    if key == ord("q"):
+    if key == ord("q") or (time.time()- start_time)> record_duration:
         break
-
+print("Recording finished")
 
 
 
