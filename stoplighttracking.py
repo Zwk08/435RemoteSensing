@@ -60,7 +60,7 @@ while True:
     # blur the frame and convert to the HSV
     # color space
     image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    blurred = cv2.GaussianBlur(image, (5, 5), 0)#make smaller for better fps
+    blurred = cv2.GaussianBlur(image_bgr, (5, 5), 0)#make smaller for better fps
     hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
     # construct a mask for the color "green", then perform
     # a series of dilations and erosions to remove any small
@@ -102,6 +102,7 @@ while True:
     # press the 'q' key to stop the video stream
     if key == ord("q") or (time.time()- start_time)> record_duration:
         break
+    time.sleep(0.1)
 print("Recording finished")
 cv2.destroyAllWindows()
 picam2.stop()
