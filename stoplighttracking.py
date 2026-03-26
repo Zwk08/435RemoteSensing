@@ -41,7 +41,7 @@ out = cv2.VideoWriter('stoplight.mp4', fourcc, 10, (640, 480))
 
 # --- Timing for recording ---
 start_time = time.time()
-record_duration = 32  # seconds (change if you want longer)
+record_duration = 40  # seconds (change if you want longer)
 
 # define the codec and create VideoWriter object
 # UNCOMMENT THE FOLLOWING TWO (2) LINES TO SAVE .avi VIDEO FILE
