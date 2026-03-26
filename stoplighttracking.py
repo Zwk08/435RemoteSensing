@@ -68,9 +68,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
            	# then update the list of tracked points
 	        cv2.circle(image, (int(x), int(y)), int(radius),(0, 255, 255), 2)
             cv2.circle(image, center, 2, (0, 0, 255), -1)
-		# write the frame to video file
-		# UNCOMMENT THE FOLLOWING ONE (1) LINE TO SAVE .avi VIDEO FILE
-	#out.write(image)
+            # write the frame to video file
+            # UNCOMMENT THE FOLLOWING ONE (1) LINE TO SAVE .avi VIDEO FILE
+        #out.write(image)
 
     # show the frame to our screen
     cv2.imshow("Frame", image)
