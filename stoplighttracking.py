@@ -56,7 +56,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     
     if len(cnts) > 0:
 
-	    # find the largest contour in the mask, then use
+        # find the largest contour in the mask, then use
         # it to compute the minimum enclosing circle and
         # centroid
         c = max(cnts, key=cv2.contourArea)
@@ -64,9 +64,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         M = cv2.moments(c)
         center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
         if radius > 0:
-	        # draw the circle and centroid on the frame
+            # draw the circle and centroid on the frame
            	# then update the list of tracked points
-	        cv2.circle(image, (int(x), int(y)), int(radius),(0, 255, 255), 2)
+            cv2.circle(image, (int(x), int(y)), int(radius),(0, 255, 255), 2)
             cv2.circle(image, center, 2, (0, 0, 255), -1)
             # write the frame to video file
             # UNCOMMENT THE FOLLOWING ONE (1) LINE TO SAVE .avi VIDEO FILE
@@ -76,12 +76,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     cv2.imshow("Frame", image)
     key = cv2.waitKey(1) & 0xFF
 
-	# clear the stream in preparation for the next frame
+    # clear the stream in preparation for the next frame
     rawCapture.truncate(0)
 
-	# press the 'q' key to stop the video stream
+    # press the 'q' key to stop the video stream
     if key == ord("q"):
-       	break
+        break
 
 
 
