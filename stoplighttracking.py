@@ -70,7 +70,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             cv2.circle(image, center, 2, (0, 0, 255), -1)
 		# write the frame to video file
 		# UNCOMMENT THE FOLLOWING ONE (1) LINE TO SAVE .avi VIDEO FILE
-		#out.write(image)
+	#out.write(image)
 
     # show the frame to our screen
     cv2.imshow("Frame", image)
