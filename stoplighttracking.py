@@ -33,7 +33,7 @@ picam2.configure(config)
 
 # Optional: fix color tint
 picam2.set_controls({
-    "AwbMode": 5,#"Incandescent",   # or "Auto" / "Daylight" depending on your lighting
+    "AwbMode": 5"Incandescent",   # or "Auto" / "Daylight" depending on your lighting
     "Brightness": 0.5,           # adjust if needed
     "Contrast": 1.0,
     "Saturation": 1.2             # slightly boost color if green looks dull
@@ -57,8 +57,8 @@ time.sleep(0.1)
 while True:
     image = picam2.capture_array()
     # blur the frame and convert to the HSV
-    image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     # color space
+    image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
     blurred = cv2.GaussianBlur(image, (11, 11), 0)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     # construct a mask for the color "green", then perform
@@ -85,14 +85,14 @@ while True:
         if radius > 0:
             # draw the circle and centroid on the frame
            	# then update the list of tracked points
-            cv2.circle(image, (int(x), int(y)), int(radius),(0, 255, 255), 2)
-            cv2.circle(image, center, 2, (0, 0, 255), -1)
+            cv2.circle(image_bgr, (int(x), int(y)), int(radius),(0, 255, 255), 2)
+            cv2.circle(image_bgr, center, 2, (0, 0, 255), -1)
             # write the frame to video file
             # UNCOMMENT THE FOLLOWING ONE (1) LINE TO SAVE .avi VIDEO FILE
         #out.write(image)
 
     # show the frame to our screen
-    cv2.imshow("Frame", image)
+    cv2.imshow("Frame", image_bgr)
     key = cv2.waitKey(1) & 0xFF
 
     # clear the stream in preparation for the next frame
