@@ -27,7 +27,8 @@ camera.framerate = 25
 rawCapture = PiRGBArray(camera, size=(640,480))
 """
 picam2 = Picamera2()
-picam2.configure(picam2.create_preview_configuration(main={"size":(640,480)}), display = "None")
+# Video configuration (less crop than preview)
+config = picam2.create_video_configuration(main={"size": (640, 480)})
 picam2.configure(config)
 
 # Optional: fix color tint
