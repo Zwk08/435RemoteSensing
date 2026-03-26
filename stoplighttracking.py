@@ -32,13 +32,7 @@ config = picam2.create_preview_configuration(main={"size": (640, 480)})
 picam2.configure(config)
 
 # Optional: fix color tint
-picam2.set_controls({
-    "AwbMode": 5, # "Incandescent",   # or "Auto" / "Daylight" depending on your lighting
-    "Brightness": 0.5,           # adjust if needed
-    "Contrast": 1.0,
-    "Saturation": 1.2             # slightly boost color if green looks dull
-})
-picam2.start()
+
 # allow the camera to warmup
 time.sleep(0.1)
 
@@ -62,10 +56,7 @@ record_duration = 32  # seconds (change if you want longer)
 # grab the current frame
 #image = frame.array
 while True:
-    #image = picam2.capture_array()
-    request = picam2.capture_request()
-    image = request.make_array("main")
-    request.release()
+    image = picam2.capture_array()
     # blur the frame and convert to the HSV
     # color space
     image_bgr = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
