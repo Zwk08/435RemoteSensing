@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-#import imutils
+import imutils
 import time
 import os
 import smtplib
@@ -43,7 +43,7 @@ while True:
     os.system("rpicam-still -o test0.jpg --width 1280 --height 720 --vflip --hflip")
 
     # wait between images so motion can be detected
-    time.sleep(1)
+    time.sleep(2)
 
     # take second image
     os.system("rpicam-still -o test1.jpg --width 1280 --height 720 --vflip --hflip")
@@ -56,6 +56,11 @@ while True:
     test2 = cv2.imread("test1.jpg")
     masked1, gray1 = mask_image(test1)
     masked2, gray2 = mask_image(test2)
+
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):
+        print("Quitting...")
+        break
 
     #compare the two images 
     pixel_thres= 50 #how much pixel has to actually change
