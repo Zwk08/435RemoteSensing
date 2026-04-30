@@ -43,7 +43,7 @@ while True:
     os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip")
 
     # wait between images so motion can be detected
-    time.sleep(2)
+    time.sleep(1)
 
     # take second image
     os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip")
