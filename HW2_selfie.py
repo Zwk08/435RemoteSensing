@@ -14,6 +14,7 @@ try:
         today = now.strftime("%d-%m-%Y-%H_%M_%S")
         # Capture image and show to the screen
         image = picam2.capture_array()
+        image = cv2.flip(image, -1)
         cv2.imshow("Camera", image)
         # Save an image when a key is pressed (e.g., 's')
         key = cv2.waitKey(1)
