@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import imutils
+#import imutils
 import time
 import os
 import smtplib
