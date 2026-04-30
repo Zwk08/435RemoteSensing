@@ -12,3 +12,5 @@ def mask_image(img):
         #after using the fucntion above to get points of our masked area we do the following 
 
 test1 = cv2.imread("30-04-2026-15_50_56.jpg")
+cv2.imshow("Original", test1)
+cv2.waitKey(0)
