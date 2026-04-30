@@ -40,13 +40,13 @@ while True:
     print("----Times through loop since starting:",counter,"----")
     print("")
     #take a first and second image to compare
-    os.system("rpicam-still -o test0.jpg --width 1280 --height 720 --vflip --hflip")
+    os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip")
 
     # wait between images so motion can be detected
     time.sleep(2)
 
     # take second image
-    os.system("rpicam-still -o test1.jpg --width 1280 --height 720 --vflip --hflip")
+    os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip")
 
 
     print ("Captured 1st & 2nd image for analysis...")
@@ -87,7 +87,7 @@ while True:
         os.makedirs(save_path, exist_ok=True)
         video_file = f"{save_path}/{timestr}.mp4"
         command2 = (
-        f"rpicam-vid -t 15000 "
+        f"rpicam-vid --nopreview -t 15000 "
         f"--width 1280 --height 720 "
         f"--vflip --hflip "
         f"--framerate 15 "
