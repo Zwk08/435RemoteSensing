@@ -11,4 +11,4 @@ def mask_image(img):
         #hit spacebar after creating box
         #after using the fucntion above to get points of our masked area we do the following 
 
-test1 = cv2.imread("ring_test_image.jpg")
+test1 = cv2.imread("30-04-2026-15_50_56.jpg")
