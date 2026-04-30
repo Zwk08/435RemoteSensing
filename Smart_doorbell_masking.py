@@ -26,7 +26,7 @@ def mask_image(img):
     #can have 2 fillConvexPolys if we want to add extra areas 
 
     masked = cv2.bitwise_and(img, img, mask=mask)
-    gray = imutils.resize(masked, width =200) #helps processing
+    gray = cv2.resize(masked, (200, int(masked.shape[0] * 200 / masked.shape[1]))) #helps processing
     gray = cv2.cvtColor(gray, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (11,11),0)
 
