@@ -90,7 +90,7 @@ while True:
         f"rpicam-vid -t 15000 "
         f"--width 1280 --height 720 "
         f"--vflip --hflip "
-        f"--framerate 30 "
+        f"--framerate 15 "
         f"--codec libav "
         f"-o {video_file}"
     )
@@ -114,7 +114,7 @@ while True:
 
 
         #send email to users with images 
-        smtpUser = 'Zacharykessler@gmail.com'
+        smtpUser = 'Zacharykessler40@gmail.com'
         smtpPass = 'eesmxvgblkbddwro'
         toAdd = 'zwk0804@outlook.com'
         fromAdd = smtpUser
