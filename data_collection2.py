@@ -45,7 +45,7 @@ while True:
 
     # ---- SAVE IMAGE ----
     if key == ord("m"):
-        filename = f"{save_dir}/{int(d)}_{int(time.time())}.jpg"
+        filename = f"{save_dir}/{int(d)}.jpg"
         cv2.imwrite(filename, image)
         print("Saved:", filename)
 
