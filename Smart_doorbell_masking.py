@@ -21,7 +21,7 @@ def mask_image(img):
         #print(bbox)
         #hit spacebar after creating box
         #after using the fucntion above to get points of our masked area we do the following 
-    pts = np.array([[450, 720],[450, 180], [1280, 180], [1280, 720]], dtype=np.int32)
+    pts = np.array([[450, 719], [450, 180], [1279, 180], [1279, 719]], dtype=np.int32)
     cv2.fillConvexPoly(mask,pts,255)
     #can have 2 fillConvexPolys if we want to add extra areas 
 
@@ -80,7 +80,7 @@ while True:
         
         save_path = f"/home/pi/{timestr}"
         os.makedirs(save_path, exist_ok=True)
-
+        video_file = f"{save_path}/{timestr}.mp4"
         command2 = (
         f"rpicam-vid -t 15000 "
         f"--width 1280 --height 720 "
@@ -114,7 +114,7 @@ while True:
         toAdd = 'zwk0804@outlook.com'
         fromAdd = smtpUser
 
-        f_time = datetime.now()strftime('%a %d %b @ %H:%M')
+        f_time = datetime.now().strftime('%a %d %b @ %H:%M')
         subject = 'Smart Doorbell recording drom: ' +f_time
         msg= MIMEMultipart()
         msg['Subject'] = subject
