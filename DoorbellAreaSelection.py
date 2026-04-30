@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import imutils
+#import imutils
 
 
 def mask_image(img):
