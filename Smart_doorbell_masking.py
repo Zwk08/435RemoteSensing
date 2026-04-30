@@ -127,7 +127,7 @@ while True:
         msg['To'] = toAdd
         msg.preamble = "image recorded at " + f_time
 
-        body = email.mime.Text.MIMEText('Smart Doorbell video: ' + f_time)
+        body = MIMEText('Smart Doorbell video: ' + f_time)
         msg.attach(body)
 
         fp = open('test0.jpg', 'rb')
