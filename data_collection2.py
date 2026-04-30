@@ -15,8 +15,8 @@ picam2.start()
 time.sleep(1)
 
 # ---- USER INPUT ----
-d = input("Please enter distance from wall (in inches): ")
-print("Confirming the distance you entered is:", d)
+d = input("Please enter IMU angle: ")
+print("Confirming the IMU angle you entered is:", d)
 
 # ---- CREATE SAVE FOLDER ----
 save_dir = "/home/pi/alignment_images"
