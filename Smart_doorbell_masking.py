@@ -40,13 +40,13 @@ while True:
     print("----Times through loop since starting:",counter,"----")
     print("")
     #take a first and second image to compare
-    os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip")
+    os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
 
     # wait between images so motion can be detected
     time.sleep(1)
 
     # take second image
-    os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip")
+    os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
 
 
     print ("Captured 1st & 2nd image for analysis...")
@@ -164,7 +164,7 @@ while True:
         s.quit()
 
         print("Email Delivere!!")
-
+        time.sleep(20)
 
 
     else:
