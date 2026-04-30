@@ -48,7 +48,7 @@ while True:
         filename = f"{save_dir}/{int(d)}.jpg"
         cv2.imwrite(filename, image)
         print("Saved:", filename)
-
+        break
     # ---- QUIT ----
     if key == ord("q"):
         print("Exiting...")
