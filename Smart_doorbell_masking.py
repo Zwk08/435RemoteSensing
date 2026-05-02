@@ -41,13 +41,13 @@ while True:
     print("")
     #take a first and second image to compare
     #os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
-    os.system("rpicam-still -o test0.jpg --width 1280 --height 720 --vflip --hflip")
+    os.system("rpicam-still -o test0.jpg --width 1280 --height 720 --vflip --hflip --rotation 270")
     # wait between images so motion can be detected
     time.sleep(.5)
 
     # take second image
     #os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
-    os.system("rpicam-still -o test1.jpg --width 1280 --height 720 --vflip --hflip")
+    os.system("rpicam-still -o test1.jpg --width 1280 --height 720 --vflip --hflip --rotation 270")
 
     print ("Captured 1st & 2nd image for analysis...")
 
