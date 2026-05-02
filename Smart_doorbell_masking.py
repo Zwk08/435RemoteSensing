@@ -21,7 +21,13 @@ def mask_image(img):
         #print(bbox)
         #hit spacebar after creating box
         #after using the fucntion above to get points of our masked area we do the following 
-    pts = np.array([[450, 719], [450, 180], [1279, 180], [1279, 719]], dtype=np.int32)
+    #pts = np.array([[450, 719], [450, 180], [1279, 180], [1279, 719]], dtype=np.int32)
+    pts = np.array([
+        [0, 450],       # left lower-ish
+        [0, 1279],      # bottom left
+        [720, 1279],    # bottom right
+        [720, 450]      # right lower-ish
+    ], dtype=np.int32)
     cv2.fillConvexPoly(mask,pts,255)
     #can have 2 fillConvexPolys if we want to add extra areas 
 
@@ -40,15 +46,14 @@ while True:
     print("----Times through loop since starting:",counter,"----")
     print("")
     #take a first and second image to compare
-    #os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
-    os.system("rpicam-still -o test0.jpg --width 1280 --height 720 --vflip --hflip --rotation 270")
+    os.system("rpicam-still --nopreview -o test0.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
+    
     # wait between images so motion can be detected
     time.sleep(.5)
 
     # take second image
-    #os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
-    os.system("rpicam-still -o test1.jpg --width 1280 --height 720 --vflip --hflip --rotation 270")
-
+    os.system("rpicam-still --nopreview -o test1.jpg --width 1280 --height 720 --vflip --hflip --timeout 100")
+   
     print ("Captured 1st & 2nd image for analysis...")
 
     #mask images
@@ -56,7 +61,8 @@ while True:
     test2 = cv2.imread("test1.jpg")
     masked1, gray1 = mask_image(test1)
     masked2, gray2 = mask_image(test2)
-
+    test1 = cv2.rotate(test1, cv2.ROTATE_90_COUNTERCLOCKWISE)
+    test2 = cv2.rotate(test2, cv2.ROTATE_90_COUNTERCLOCKWISE)
     key = cv2.waitKey(1) & 0xFF
     if key == ord('q'):
         print("Quitting...")
