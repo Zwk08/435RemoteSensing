@@ -78,7 +78,7 @@ while True:
 
 
     #time.sleep(1)
-    if detector_total >30000:
+    if detector_total >15000:
         print("SmartDoorbell has detected someone/something at the door")
         #define a unique name for the new video file
         timestr = time.strftime("doorbell-%Y%m%d-%H%M%S")
