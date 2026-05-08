@@ -19,7 +19,10 @@ d = input("Please enter IMU angle: ")
 print("Confirming the IMU angle you entered is:", d)
 
 # ---- CREATE SAVE FOLDER ----
-save_dir = "/home/pi/alignment_images2"
+save_dir = "/home/pi/alignment_jim_left"
+#save_dir = "/home/pi/alignment_jim_front"
+#save_dir = "/home/pi/alignment_jim_back"
+#save_dir = "/home/pi/alignment_jim_right"
 os.makedirs(save_dir, exist_ok=True)
 
 # ---- MAIN LOOP ----
